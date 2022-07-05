@@ -1,0 +1,85 @@
+<div class="form-top">
+  <%= render 'shared/errors', obj: @expense %>
+
+  <%= form_with url: expenses_url, class: "p-5 shadow rounded" do |form| %>
+    <h4>Create expense</h4>
+
+    <div class="mt-4">
+      <%= form.label :description, class: "col-2 col-form-label" %>
+      <br/>
+      <%= form.text_field :description, class: "form-control shadow rounded", required: true %>
+    </div>
+
+    <div class="mt-2">
+      <%= form.label :amount, class: "col-2 col-form-label" %>
+      <br/>
+      <%= form.number_field :amount, class: "form-control shadow rounded", required: true %>
+    </div>
+
+    <div class="mt-2">
+      <%= form.label :date, class: "col-2 col-form-label" %>
+      <br/>
+      <%= form.date_field :date, class: "form-control shadow rounded", required: true %>
+    </div>
+
+    <div class="mt-2">
+      <%= form.label "Select who made the expense", class: "ml-3 col-form-label" %>
+      <br/>
+      <%= form.collection_select(
+        :user_id, User.all, :id, :name,
+        {},
+        { size: 3, required: true, include_hidden: false, class: "select-user form-control shadow rounded" })
+      %>
+    </div>
+
+    <p>
+      <p class="form-check">
+        <%= form.check_box :expense, class: "expense-others" %>
+        Was this expense made by with others?
+      </p>
+    </p>
+
+    <div class="radio-btns-container">
+      <div class="radio-btns">
+        <div class="form-check">
+          <%= form.radio_button :split, "Share evenly", class: "form-check-input", required: true %>
+          <%= form.label :share_evenly %>
+        </div>
+        
+        <div class="form-check">
+          <%= form.radio_button :split, "Share by amount", class: "form-check-input" %>
+          <%= form.label :share_by_amount %>
+        </div>
+
+        <div>
+          <%= form.label :debtors, class: "col-2 col-form-label" %>
+          <br/>
+          <%= form.collection_select(
+            :debtor_ids, User.all, :id, :name,
+            {},
+            { multiple: true, size: 3, required: true, include_hidden: false, class: "select-user form-control shadow rounded" })
+          %>
+        </div>
+      </div>
+    </div>
+
+    <%= form.submit class: "btn btn-primary mt-3" %>
+  <% end %>
+  
+  <script>
+    const expenseWithOthers = document.querySelector(".expense-others")
+
+    const radioBtnsContainer = document.querySelector(".radio-btns-container")
+    const radioBtns = document.querySelector(".radio-btns")
+
+    radioBtnsContainer.removeChild(radioBtns)
+
+    expenseWithOthers.addEventListener("change", () => {
+      if (expenseWithOthers.checked) {
+        radioBtnsContainer.appendChild(radioBtns)
+      } else {
+        radioBtnsContainer.removeChild(radioBtns)
+      }
+    })
+  </script>
+</div>

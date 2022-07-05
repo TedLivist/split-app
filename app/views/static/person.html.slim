@@ -1,49 +1,34 @@
 .dashboard-wrapper
   aside.side-bar-area
     .friends-list
-      p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+      p.text-bold.bg-secondary.text-white.py-2.pl-2 FRIENDS
+      - User.all.each do |user|
+        - unless user == current_user
+          = link_to user.name, "/people/#{user.id}", class: "friend-name my-2"
   .main-area
     .top-bar
       h1.top-bar-title Dashboard
       .top-bar-actions
-        button.btn.btn-primary type="button"  Add an expense
-        button.btn.btn-secondary type="button"  Settle up
+        = link_to "Add an expense", new_expense_path, class: "btn btn-primary",  method: :get
+        = link_to "Settle up", debts_path, class: "btn btn-secondary", method: :get 
+      
     .expenses-list
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+      - if @person_credits.present?
+          h4 Expenses
+          table.w-100
+            tbody
+            - @person_credits.each do |credit|
+              tr
+                td.d-flex.pl-2
+                  small.mt-1 #{credit.expense.date}
+                  p
+                    h5.ml-2 #{credit.expense.description}
+                td
+                  .text-center paid
+                  .text-center $#{credit.expense.amount}
+                td.pr-2
+                  .text-right lending #{credit.debtor.name}
+                  .text-right $#{credit.amount_owed}
+      - else
+        h4.expense-item No expenses yet
+
