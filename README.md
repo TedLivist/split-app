@@ -1,35 +1,84 @@
-# Rails Assignment - Splitwise
+![](https://img.shields.io/badge/Teddy-blueviolet)
 
-## Setup
-- Clone the repository in your local machine.
-- Run `rails db:setup`, this will also seed data in the `User` model
-- Run `rails s` to start the server and `rails c` for rails console
+# Split App
 
-## Requirements
+> The app allows one to make and keep track of expenses between friends. An expense can be split evenly or by specific amounts. Or there can be no splits at all - it can be a solo purchase. 
 
-- Ruby - 2.6.3
-- Rails - 6.1.4
-- Git (configured with your Github account)
-- Node - 12.13.1
+![scrnsht](scrnsht.jpg)
 
+## Built With
 
-## Things available in the repo
-- Webpacker configured and following packages are added and working.
-  - Jquery
-  - Bootstrap
-  - Jgrowl
-- Devise installed and `User` model is added. Sign in and Sign up pages have been setup.
-- Routes and layouts for following page have been added.
-  - Dashboard - This will be the root page.
-  - Friend page - `/people/:id`
+- Ruby on Rails
+- Javascript
+- Bootstrap
+
+## Live Demo
+
+[Live Demo Link](http://split-wise-app.herokuapp.com/)
 
 
-## Submission
-- Make the improvements as specified in your technical assignment task.
-- Commit all changes to a single PR.
-- Deploy your app to Heroku.
-- Send us the link of the dpeloyed application and your PR.
+## Getting Started
 
+**Here are steps for setting up this app**
 
-## Contact us
-If you need any help regarding this assignment or want to join [Commutatus](https://www.commutatus.com/), drop us an email at work@commutatus.com 
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- Ruby
+- Ruby on Rails
+- PostgreSQL
+- Yarn
+
+### Setup
+
+- In your local PC, open your terminal in the folder you would like to clone the project to
+- Copy the link to this repository from the green `Code` button
+- In the terminal run  `git clone https://github.com/TedLivist/splitapp.git`
+- Change into the directory of the cloned app: `cd splitapp`
+
+### Install
+
+- Run `bundle install` to install the ruby gems
+- Run `yarn install` to install dependencies
+
+### Usage
+
+- Run `rails db:create` to create the database tables
+- Run `rails db:migrate` run the migration files
+- Run `rails db:seed` to create pre-defined users
+- Run `rails s` to spin up a development server
+- Once the server is up and running, in your browser visit `http://localhost:3000` to view the app
+
+### Run tests
+
+- Run `rspec spec` on the terminal to run the tests
+OR
+- Run  `bundle exec rspec spec` if you have terminal related issues with the aforementioned command
+
+## Authors
+
+👤 **Teddy-Livingstone**
+
+- [GitHub](https://github.com/TedLivist)
+- [LinkedIn](https://linkedin.com/in/tememandu)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Inspiration
+- Perseverance
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.

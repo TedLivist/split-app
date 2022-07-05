@@ -1,0 +1,24 @@
+<div class="form-top">
+  <% if session[:errors].present? %>
+    <% session[:errors].each do |error| %>
+      <p class="text-danger">
+        <%= error %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <% if @debtors.present? %>
+    <%= form_with url: debts_url, class: "px-5 py-4 shadow rounded" do |form| %>
+      <p>Expense amount: <%= session[:expense_amount] %></p>
+      <% num = 0 %>
+      <% @debtors.each do |debtor| %>
+        <% num += 1 %>
+        <p>
+          <strong><%= debtor["name"] %></strong> will pay
+          <%= form.number_field "split[amount_#{num}]", step: :any, class: "form-control shadow rounded", required: true %>
+        </p>
+      <% end %>
+      <%= form.submit class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
