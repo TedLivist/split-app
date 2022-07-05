@@ -8,10 +8,8 @@ header
         #navbarNavDarkDropdown.collapse.navbar-collapse
           ul.navbar-nav
             li.nav-item.dropdown
-              a#navbarDarkDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
-                | Account
-              ul.dropdown-menu.dropdown-menu-dark aria-labelledby="navbarDarkDropdownMenuLink" 
-                li
-                  = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
-                    .icon-logout.font-size-20.mr-4
-                    | Logout
+              a#navbarDarkDropdown.nav-link.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#"
+                | Dropdown
+              .dropdown-menu.bg-dark aria-labelledby="navbarDropdown"
+                = link_to destroy_user_session_path, method: :delete, class: "dropdown-item bg-dark text-white"
+                  | Logout

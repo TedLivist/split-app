@@ -1,0 +1,25 @@
+<div class="form-top">
+  <% if @debts.present? %>
+    <h4 class="text-center">Your debts</h4>
+    <table class="table mt-5 shadow">
+      <thead>
+        <tr>
+          <th scope="col">Creditor</th>
+          <th scope="col">Amount Owed</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @debts.each do |debt| %>
+        <tr>
+          <td><strong><%= debt.creditor.name %></strong></td>
+          <td>$<%= debt.amount_owed %></td>
+          <td><%= link_to "Settle debt", edit_debt_path(debt), class: "btn btn-warning", method: :get %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h3>No debt. Hooray!</h3>
+  <% end %>
+</div>

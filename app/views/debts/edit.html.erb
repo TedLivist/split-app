@@ -1,0 +1,16 @@
+<div class="form-top">
+  <%= render 'shared/errors', obj: @debt %>
+
+  <%= form_with model: @debt, class: "px-5 py-4 shadow rounded" do |form| %>
+    <h4>Repay debt</h4>
+    <div class="border-bottom border-top py-2 mb-4">
+      You are owing <%= @debt.amount_owed %>
+    </div>
+    <p>
+      <%= form.label :amount_owed %>
+      <%= form.number_field :amount_owed, class: "form-control shadow rounded" %>
+    </p>
+
+    <%= form.submit 'Pay debt', class: "btn btn-primary" %>
+  <% end %>
+</div>
